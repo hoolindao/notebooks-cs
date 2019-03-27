@@ -21,12 +21,12 @@
 > - Android Studio IDE
 >   此示例使用的是Android Studio IDE，但您可以使用其他IDE，或者从命令行运行
 
-#### 主要步骤
+#### [主要步骤](<https://flutterchina.club/get-started/codelab/>)
 
-- 创建项目
+- 创建项目 [startup_namer](./startup_namer)
 
   - reformat code with dartfmt 修复粘贴的代码缩进格式
-  - 编写 "Hello World"
+  - 编辑 **lib/main.dart** 的Dart代码实现 display "Hello World"
 
   ```dart
   // Flutter应用程序的基本结构.

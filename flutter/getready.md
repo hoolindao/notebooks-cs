@@ -19,7 +19,9 @@
 
 [Flutter中文网](https://flutterchina.club/)
 
-[一个很棒的Flutter学习资源列表](<http://www.devio.org/2018/09/09/awesome-flutter/>)
+[Fullter API 文档](<https://docs.flutter.io/>)
 
-<https://docs.flutter.io/>
+[许多开源软件包 pub.dartlang.org](https://pub.dartlang.org/flutter/)
+
+[一个很棒的Flutter学习资源列表](<http://www.devio.org/2018/09/09/awesome-flutter/>)
 
