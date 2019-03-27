@@ -140,7 +140,7 @@
 
 - 添加Stateful widget
 
-  - 基本元素
+  - 实现依赖两个类
 
     - StatefulWidget 类
     - State 类 StatefulWidget类本身是不变的，但是 State类在widget生命周期中始终存在.
@@ -216,6 +216,13 @@
   - 更新MyApp的build方法。从MyApp中删除Scaffold和AppBar实例。 这些将由RandomWordsState管理
 
   >  重新启动应用程序。你应该看到一个单词对列表。尽可能地向下滚动，您将继续看到新的单词对。
+
+  - 今天 3/27 先学到这里 
+    - Flutter应用程序的基本结构.
+    - 查找和使用packages来扩展功能.
+    - 使用热重载加快开发周期.
+    - 如何实现有状态的widget. （原理未知）
+    - 驼峰命名风格
 
 - 添加交互
 
