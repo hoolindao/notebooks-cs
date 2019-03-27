@@ -20,3 +20,6 @@
 [Flutter中文网](https://flutterchina.club/)
 
 [一个很棒的Flutter学习资源列表](<http://www.devio.org/2018/09/09/awesome-flutter/>)
+
+<https://docs.flutter.io/>
+
