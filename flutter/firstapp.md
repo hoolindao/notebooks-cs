@@ -140,7 +140,82 @@
 
 - 添加Stateful widget
 
+  - 基本元素
+
+    - StatefulWidget 类
+    - State 类 StatefulWidget类本身是不变的，但是 State类在widget生命周期中始终存在.
+
+  - 方法
+
+    - 添加有状态的 RandomWords widget
+
+    ```dart
+    // 添加到 main.dart 文件底部
+    // RandomWords widget除了创建State类之外几乎没有其他任何东西
+    class RandomWords extends StatefulWidget {
+      @override
+      createState() => new RandomWordsState();
+    }
+    ```
+
+    - 建立 RandomWordsState 类
+
+    ```dart
+    class RandomWordsState extends State<RandomWords> {
+    }
+    
+    // -----------------------------------
+    // 添加状态类后，IDE会提示该类缺少build方法
+    // -----------------------------------
+    
+    // 添加一个基本的build方法
+    class RandomWordsState extends State<RandomWords> {
+      @override
+      Widget build(BuildContext context) {
+        final wordPair = new WordPair.random();
+        return new Text(wordPair.asPascalCase);
+      }
+    }
+    
+    ```
+
+    - 修改 `MyAPP`  将生成单词对代的码从RandomWordsState移动到MyApp中
+
+    ```dart
+      Widget build(BuildContext context) {
+        // final wordPair = new WordPair.random();  // 删除此行
+        return new MaterialApp(
+            
+    			...
+    
+    		body: new Center(
+              //child: new Text(wordPair.asPascalCase),
+              child: new RandomWords(), // add this code
+            ),
+            
+        );
+      }
+    ```
+
+  - 目前为止，只是用 Stateful widget 再实现随机生成单词的方法，从显示效果来看，并没有变
+
+  > 这个类将保存随着用户滚动而无限增长的生成的单词对， 以及喜欢的单词对，用户通过重复点击心形 ❤️ 图标来将它们从列表中添加或删除。
+  >
+  > -- 后续会用到？
+
 - 创建ListView
+
+  > 在这一步中，您将扩展（继承）RandomWordsState类，以生成并显示单词对列表。 当用户滚动时，ListView中显示的列表将无限增长。 ListView的`builder`工厂构造函数? 允许您按需建立一个懒加载? 的列表视图。
+
+  - _suggestions 列表
+    - 在Dart语言中使用下划线前缀标识符，会强制其变成私有的
+    - 添加一个`biggerFont`变量来增大字体大小
+  - 向RandomWordsState类添加一个 `_buildSuggestions()` 函数. 此方法构建显示建议单词对的ListView。
+  - 在RandomWordsState中添加一个`_buildRow`函数 :
+  - 使用`_buildSuggestions()`
+  - 更新MyApp的build方法。从MyApp中删除Scaffold和AppBar实例。 这些将由RandomWordsState管理
+
+  >  重新启动应用程序。你应该看到一个单词对列表。尽可能地向下滚动，您将继续看到新的单词对。
 
 - 添加交互
 
