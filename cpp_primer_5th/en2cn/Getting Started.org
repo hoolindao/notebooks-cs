@@ -1,0 +1,55 @@
+* 中英名词表
+| 英文                                | 中文            |
+|-------------------------------------+-----------------|
+| block of statements                 | 语句块          |
+| build-in type                       | 内置类型        |
+| standard library                    | 标准库          |
+| standard input                      |                 |
+| standard output                     |                 |
+| standard error                      |                 |
+| string literal                      | 字符常量
+| manipulator                         |                 |
+| variable                            |                 |
+| comments                            | 注释            |
+| flow of control                     | 控制流          |
+| assignment                          |                 |
+| edit-compile-debug                  | 编辑-编译-调试  |
+| data structure                      | 数据结构        |
+| class                               |                 |
+| class type                          |                 |
+| File Redirection                    | 文件重定向      |
+| member function / method            | 成员函数 / 方法 |
+| the dot operator (the “.” operator) | 点运算符        |
+
+| En 1     | 2              |     3 | CN       |
+|----------+----------------+-------+----------|
+| function |                |       | 函数     |
+|          | return type    |       | 返回类型 |
+|          | function name  |       | 函数名称 |
+|          | parameter list |       | 行参列表 |
+|          | function body  |       | 函数体   |
+|          |                | block | 语句块   |
+* 术语概念关系梳理
+- 文件重定向，允许将标准输入输出与文件名关联起来
+
+- 函数
+  - 函数定义的四部分组成：返回类型，函数名，参数列表，函数体
+    - 返回类型， void | 空，基础类型，自定义类型
+    - 函数名，命名风格自定，通常动词小写，名词第一个字母大写
+    - 参数列表：指出函数调用时可以使用什么样的实参，需要传什么形参。可以为空。（形参和实参名词的准确含义看后面）
+    - 函数体是一个语句块，函数功能的具体代码
+
+- 运算符
+  - functionname() 调用运算符
+  - ++, --, 自增，自减 运算符
+  - += 复合赋值运算符 将左边对象和右边对象相加结果赋值给左边
+  - . 点运算符 对象.成员
+  - :: 作用域运算符，访问命名空间里的名字
+  - <<， >> 输出，输入运算符
+  - 逻辑运算符
+    - == 相等运算
+    - != 不等
+    - <= , >= ，小于等于，大于等于
+    - <, > ，小于，大于
+
+- #include 头文件包含指令

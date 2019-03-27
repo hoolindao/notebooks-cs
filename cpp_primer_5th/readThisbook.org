@@ -1,0 +1,274 @@
+#+TITLE: Note From Cpp Primer
+- quick open or [[https://pan.baidu.com/s/1tRcFslRVnCJ8Lf43wdnjEQ][download]]
+  - [[./books/C++primer5th_en.pdf]]
+  - [[./books/C++primer5th_cn.pdf]]
+  - [[./books/C++primer5th_exercise.pdf]]
+- 书页与PDF page对应关系：0-26 （+26）
+* Sail Begin
+** 总览全书
+- 读者群体
+#+BEGIN_QUOTE
+Although you do not need to know C in order to understand this book, we assume you know enough about programming to write, compile, and run a program in at least one modern [[https://www.quora.com/What-is-block-structured-language][block-structured]] language. In particular, we assume you have usedC++ Primer, Fifth Edition
+variables, written and called functions, and used a compiler.
+
+虽然你不必为了学习本书而掌握 C 语言，但我们还是假定你了解足够多的程序设计知识，至少了解一门现代 +分程序语言+ 分块语言，知道如何用这门语言编写、编译以及运行程序。并且，我们特别假设你已经使用过变量，编写，调用过函数，也使用过编译器。
+#+END_QUOTE
+- 我的学习目的
+  - [ ] 温习基础 C++ 知识
+  - [ ] 熟悉标准库，相关数据结构和算法
+  - [ ] 做对应基础练习
+** [[./en2cn/Getting Started.org][Getting Started]]
+*** 1.1 简单程序
+- 编写简单的程序并从命令行运行编译器
+#+BEGIN_SRC shell
+# MacOS, use g++
+# gcc & g++现在是gnu中最主要和最流行的c & c++编译器
+$ g++ hello.cpp
+#+END_SRC
+目录下得到 a.out 文件
+#+BEGIN_SRC
+|--a.out
+`--hello.cpp
+#+END_SRC
+- 或输入编译器参数指定可执行文件的文件名
+#+BEGIN_SRC shell
+# MacOS
+$ g++ hello.cpp -o hello
+#+END_SRC
+#+BEGIN_SRC
+|--hello
+`--hello.cpp
+#+END_SRC
+- 执行文件
+#+BEGIN_SRC shell
+# cd 到文件目录后
+$ ./a.out
+# 或
+$ ./hello
+#+END_SRC
+**** Q with 1.1
+- 如何直观理解，“每个c++程序都包含一个或多个函数”？
+- 一个函数的定义包含哪四个部分？
+  #+BEGIN_SRC c++
+int main(){
+  return 0; //if running successfully
+}
+  #+END_SRC
+- 只讨论 从命令行运行编译器 情况
+  - 编译命令格式？
+  - Windows 和 UNIX 默认产生的可执行名称？
+  - 执行可执行文件，Windows 和 UNIX 命令有什么区别？
+  - 执行完毕，用哪条命令获取返回值？
+- what is "Types" ? | 什么是类型？
+*** 1.2 输入输出
+- 直观理解 “表达式” (expression)
+- [[*%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E8%A1%A8%E8%BE%BE%E5%BC%8F%EF%BC%8C%E5%B9%B6%E7%BB%99%E5%87%BA%E8%BE%83%E7%B2%BE%E7%A1%AE%E5%AE%9A%E4%B9%89][深入理解表达式，并给出较精确定义]]
+- 明明使用命名空间后，要么要在程序开头声明，要么每个来自标准库中的名字，要使用作用域运算符，看似很麻烦，那它有什么好处？
+- 本节都提到哪些运算符？
+- c++ 的 IO 机制由哪个标准库提供？它具备哪两个基本对象？
+- cerr 和 clog 在命令行输出好像也没有特别的效果，那用它有什么 “特效” ？
+- endl 是什么？
+**** A to 1.2::1.6
+#+BEGIN_SRC c++
+std::cout << "The sum of " << v1;
+          << " and " << v2;
+          << " is " << v1 + v2 << std::endl;
+#+END_SRC
+#+BEGIN_QUOTE
+拥有上述代码片段的程序不合法。
+1. c++ 中的表达式结束标志符号是 ";"，故上述是三行独立的表达式。
+2. 输出运算符接受两个运算对象，左侧的运算对象必须是一个 ostream 对象。而后两行无ostream 对象。
+#+END_QUOTE
+***** 深入理解表达式，并给出较精确定义
+#+BEGIN_QUOTE
+在 C++ 中，一个表达式产生一个运算结果，它由一个或多个运算对象和（通常是）一个运算符组成。
+#+END_QUOTE
+***** 本节都提到哪些运算符？
+#+BEGIN_SRC c++
+<< //输出运算符，左侧必须是一个输出对象
+>> //输入运算符，右侧必须有输入对象
+#+END_SRC
+*** 1.3 注释
+- 两个种类的注释符
+#+BEGIN_SRC c++
+// 单行注释
+/* 注释界定符 */
+#+END_SRC
+- 注释界定符在使用时要避免出现嵌套的现象
+  - 思考嵌套会发生什么，为什么会这样？
+  - 举例，不是故意出现注释界定符嵌套现象
+- 思考下面代码
+#+BEGIN_SRC c++
+std::cout << "/*" << "*/"
+std::cout << /* "*/" /* "/*" */;
+#+END_SRC
+*** 1.4 控制流
+- while 语句
+#+BEGIN_SRC c++
+while (condition)
+  statement
+// while 语句的执行过程:
+// 交替地 检测 condition 和执行 statement，直到 condition == false
+#+END_SRC
+- for 语句
+  while 循环控制语句功能更基础且通用。而C++对常用的循环模式（使用变量控制循环执行次数）专门定义了for语句。
+#+BEGIN_SRC c++
+for (init-statement; condition; expression)
+  statement
+// init-statement ：初始化循环控制变量
+// for example 输出10个 "*"
+for (int i = 1; i <= 10; i++)
+  printf("*");
+// 执行过程
+// 先初始化变量 i 为1
+// 然后进入循环条件控制
+// 1. 检查 condition (i <= 10 ?)符合要求进入 2 否则退出循环 end
+// 2. 执行 statement ( printf("*"); )
+// 3. 执行 expression (i++) 进入 1
+// end
+#+END_SRC
+- if 语句
+#+BEGIN_SRC c++
+if (condition)
+  statement
+#+END_SRC
+- 文件结束符。将 iostream 对象作为条件时，其遇到一个无效输入或文件结束符时，对象状态会变为无效，使条件为假。
+  - 不同系统输入文件结束符
+    - win: C+z
+    - Unix(include MacOS): C+d
+- 编译器
+  | can do            | can't do                       |
+  |-------------------+--------------------------------|
+  | detect form error | detect what its author intends |
+  - 编译器可查出的常见错误
+    | syntax error      | 语法错误 |
+    | type error        | 类型错误 |
+    | declaration error | 声明错误 |
+- 坚持一种代码风格
+**** Q with 1.4
+- 控制流语句与语句块有什么区别联系？control statements & block of statements
+- 语句块与单条语句的区别联系
+- 做1.4.1::1.6 时 "\+=" 与 "=+"
+- 关键字带括号中间有空格，函数参数的括号就紧跟函数名，从而在代码风格上做出区分
+- “cin 遇到无效输入” 的具体例子
+**** A to 1.4
+- 1.4::1.12
+  完成功能从 -100 加到 100，sum 终值为 0
+- 1.4::1.14
+  | 优点                           | 缺点                     |
+  |--------------------------------+--------------------------|
+  | for                            |                          |
+  | - 语法规范，结构整齐           | - 功能较单一             |
+  | - 容易被读懂（显式的循环控制） | - 语句形较 while 更臃肿  |
+  |--------------------------------+--------------------------|
+  | while                          |                          |
+  | - 形式简洁，功能灵活           | - 可能会出现隐式循环控制 |
+  | - 执行更高效                   |                          |
+  |--------------------------------+--------------------------|
+
+*** 1.5 类简介
+- 使用文件重定向批量输入测试用例
+- 成员函数
+- 对象调用成员函数
+**** A to 1.5
+- 类名是什么？/ [[https://www.zhihu.com/question/266041176][一个空类占多大内存？]]
+#+BEGIN_QUOTE
+c++ 中我们通过定义类来定义自己的数据结构。一个类定义了一个类型，以及与其相关联的一组操作。最终能像使用内置类型一样使用类类型。（build-in type & class type）
+
+故类名也是类类型名，可用来定义类对象。
+#+END_QUOTE
+- 它是在哪里定义的？
+#+BEGIN_QUOTE
+在头文件中定义
+#+END_QUOTE
+- 它支持什么操作？
+*** 1.6 书店程序
+- Sales_item 的数据结构是什么？
+- 一条记录的字段含义分别是什么？
+*** 小结
+- c++ 中最简单的程序组成和结构，即 main 函数
+- 一个表达式都具有一个运算结果
+- 在不同系统中用命令行调用命令行边缘 cpp 文件。（命令结构和 c 中调用函数很像）
+- 原来 cin 和 cout 是定义在标准库 iostream 的对象。了解了 “stream | 流” 的概念
+- 控制语句，用代码块，更好地理解
+- 定义类的最初目的是像内置类型一样使用自定义数据结构
+**** Q
+- 最简单的 main 函数在运行时，其占用内存空间的情况如何？数据空间，代码空间，栈，堆等。
+* Part One Basic C++
+变量、基本类型、字符串、向量和数组、表达式、基本语句、函数、类 等 c/c++ 基础语法特征
+
+- 从静态和动态数据角度，说出 c++ 与 Python 的区别
+- c++ 类的支持使得使用简洁的 c++ 构建出复杂的系统。less is more，more is powerful
+** Various and Basic Types | 变量和基本类型
+- 比特，字节，字等之间的关系？
+- unsigned ?
+- 基本变量类型占用内存大小？（bite）
+- Unicode 和 UTF-8 什么关系？
+*** 比特，字节，字等之间的关系？
+计算机以比特序列存储数据，每个比特非0即1，大多数计算机以2的整数次幂比特来处理内存，可寻址的最小内存块称为 “字节”，存储的基本单元称为 “字”
+
+| 比特 | bite |
+| 字节 | byte |
+| 字   | word |
+
+- 为什么一字节通常等于8比特？
+- “存储的基本单位”指什么？字长如何计算？
+**** 字节、字长具体值计算
+通用计算机中
+
+1 Byte = 8 bite
+word size = the number of bites of CPU processing in one go
+**** 为什么一字节通常等于8比特？
+从历史的观点上，“字节” 表示用于编码单个字符所需要的比特数量。因为8比特可以编码256种字符，对于英语来说，足够所有大小写字母，数字和各种符号。
+
+但渐渐地，字节通常用作计算机信息计量单位，不分数据类型。其值为8 bite。
+
+#+BEGIN_QUOTE
+A byte is a unit of measurement used to measure data.
+
+The byte was originally developed to store a single character.
+#+END_QUOTE
+
+- 思考 对于汉字来说，每个汉字型都需要单独编码，8比特够吗？
+- 思考 ASCII、utf-8和unicode 等字符编码标准的区别和联系。
+- 思考 office 办公软件 字符数的计算和 设置密码 字符数的限制
+- 再思考，为什么很少用汉字作为各类 password？
+**** “存储的基本单位” 指什么？字长如何计算？
+计算机处理器一次能处理的比特数即为字长，也是单次访存存取数据量的基本单位。
+
+#+BEGIN_QUOTE
+A word is the natural size with which the processor is handling data, also referred to as the register size.
+
+The word size refers to the number of bits processed by a computer's CPU in one go (these days, typically 32 bits or 64 bits). Data bus size, instruction size, address size are usually multiples of the word size. The word size is what the majority of operations work with.
+#+END_QUOTE
+
+| 字长 | word size |
+*** 带符号和无符号
+| 带符号 | signed   |
+| 无符号 | unsigned |
+- 有哪些基础类型可以声明为无符号？
+- c++ 如何将整型声明为无符号数？
+**** c++ 如何将整型声明为无符号数？
+类型 int、short、long 和 long long 都是带符号的。通过在这些类型名前添加 unsigned 就可以得到无符号类型。
+** 3.1-3.6
+** 4.1-4.12
+** 5.1-5.6
+** 6.1-6.7
+** 7.1-7.6
+* Part Two STL C++
+** 8.1-8.3
+** 9.1-9.6
+** 10.1-10.6
+** 11.1-11.4
+** 12.1-12.3
+** 13.1-13.6
+** 14.1-14.9
+** 15.1-15.9
+** 16.1-16.5
+* Part Four ?
+* 相关连接
+
+- 书本、习题集和源代码: [[https://github.com/huihut/Cpp_Primer_5th]]
+* Memo of notebook
+- 用章节名建立一个org并链接在标题名，收集本章名词，梳理术语概念
+- 每章笔记组成：过程描述+小结+Q&A

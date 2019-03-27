@@ -1,0 +1,113 @@
+* iOS 学习之路
+- qick open or [[https://pan.baidu.com/s/1riL8E21MBhQoLCGlZM8q_A][download]]
+  -  [[./iOS_Apprentice/iOS_Apprentice_v6.0.pdf]]
+** 学习之路
+*** TODO iOS Apprentice iOS 11, Xcode 9 & Swift 4
+**** what I need ?
+- [X] 设备
+- [X] Xcode
+- [ ] 开发者账号 $99 - ¥688
+**** work on section 1
+#+CAPTION: section 1 list
+| content                     |
+|-----------------------------|
+| APPS: Bull's Eye            |
+| 1. think like a programmer  |
+| 2. plan my programmer tasks |
+| 3. use Xcode                |
+| 4. interface Builder        |
+| 5. basics of coding for iOS |
+
+- "what" comes first
+- "分而治之" can deal with complexity
+***** todo
+- build an one-button app
+***** tips
+- exit an app
+  - on phone, use home button
+  - on simulator, use shift+com+H shortcut
+***** follow setps && questions
+****** Chapter 1 to 2 : One-Button APP
+- creat a new Xcode project of iOS with swift language
+  - [[*%E4%B8%8D%E5%B0%8F%E5%BF%83%E5%88%9B%E5%BB%BA%E6%88%90 object-c %E9%A1%B9%E7%9B%AE%E4%BC%9A%E6%80%8E%E4%B9%88%E6%A0%B7%EF%BC%9F][不小心创建成  object-c 项目会怎么样？]]
+  - 各个文件负责什么功能？命名规则？
+- run project
+  - what the difference between phone and simulator?
+  - [[*what happens when I press Run?][what happens when I press Run?]]
+- add a button
+  - what is "storyboard" mean?
+  - sum up this step
+  - meet the problem: how can I change the size of my button?
+- make it -- when the button is tapped, show an alert popup with a simple text message "Hello, World!"
+  - in this step, I meet The source code editor
+    - [[*how can I make Xcode to show the Line numbers of the code?][how can I make Xcode to show the Line numbers of the code?]]
+    - what the keywords of "@IBAction" and "func" mean?
+    - press cmd+s to save the files
+  - [[*what is view controller?][what is view controller?]]
+  - [[*how can make the connection to link two action?][how can make the connection to link two action?]]
+  - finish the instructions and figure out it's meaning
+  - tips: cmd key to see the whole brock and Issue navigator
+  - how can I see the Errors Xcode noticed for me, and what the difference between Errors and Warnings?
+- do the anatomy of an app with author
+  -
+  - list the objects that provided by iOS and program by myself
+  - try to answer why should func Return value?
+  - how can I see the Source code of an object?
+****** Chapter 3
+- what difference between points and pixels, why 640x1136 pixels equal 568x320 points?
+***** answer
+****** 不小心创建成  object-c 项目会怎么样？
+see ViewController.h and ViewController.m instead of ViewController.swift
+****** what happens when I press Run?
+1. Xcode compile my source code : translate it from Swift into machine code
+2. put the source files, images, storyboard files and so on together with the binary code into the "application bundle"
+3. Xcode copies the application bundle to machine
+4. run
+
+- why bother?
+  - phone or simulator can understand machine code only
+  - all the stuff run the app need should put it together with order
+****** sum up this step
+1. select Main.storyboard from Project navigator, then the main editing pane transforms into the Interface Builder
+2. I can make the pane layout by clicking the Hider or show utilities in toolbar
+3. if I want to see the border of my button, using the Editor -> Canvas -> Show Bounds Rectangles
+****** how can I make Xcode to show the Line numbers of the code?
+Choose Xcode -> Prefences -> Text Editing for the menu bar , then check the Line numbers
+****** what is view controller?
+A view controlller iss to manage a single screen in app
+
+(take an example to understand this sentence, the two view controller of the cookbook app)
+
+- One of the design principles of iOS is
+#+BEGIN_QUOTE
+each screen in app gets its own view controlller
+#+END_QUOTE
+
+- A view controlller support files is the storyboard and the Swift file which together form it's design and implementation
+****** how can make the connection to link two action?
+Hold down the Control key then clik the button to selct and drag up to the View Controller item, then can see a small menu appear after let go of the mouse button. select "showAlert" from the menu under "sent Events"
+
+(or I can hold down the right-click instead of Control key)
+
+Asing "sent Events", I told the Xcode to make a connection between the button and the line @IBAction func showAlert.
+
+And I can see the connection in Connection inspector
+****** finish the instructions and figure out it's meaning
+#+BEGIN_SRC
+@IBAction func showAlert() {
+  let alert = UIAlerController(title: "Hello, World", message: "This is my first app!", preferredStyle: .alert)
+
+  let action = UIAlerAction(title: "Awesome", style: .default, handler: nil)
+
+  alert.addAction(action)
+
+  present(alert, animated: true, completion: nil)
+}
+#+END_SRC
+****** what is an app ?
+- made up of objects than can sent messages to each other
+- In iOS, apps are event-driven, which means everthings my app doses is triggered by some event
+  - source of events:
+    - most improtant: user touches and taps
+    - other types of events: the operating system
+      - for example: incoming phone call, WiFi connection
