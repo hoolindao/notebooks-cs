@@ -29,20 +29,33 @@
   - 编写 "Hello World"
 
   ```dart
+  // Flutter应用程序的基本结构.
+  // main() 程序入口
+  // StatelessWidget
+  // 在Flutter中，大多数东西都是widget，包括对齐(alignment)、填充(padding)和布局(layout)
+  // widget的主要工作是提供一个build()方法来描述如何根据其他较低级别的widget来显示自己 ？
+  
   import 'package:flutter/material.dart';
+  // Material是一种标准的移动端和web端的视觉设计语言
   
   void main() => runApp(new MyApp());
+  // main函数使用了(=>)符号, 这是Dart中单行函数或方法的简写。
   
   class MyApp extends StatelessWidget {
+    // 该应用程序继承了 StatelessWidget，这将会使应用本身也成为一个widget。
     @override
-    Widget build(BuildContext context) {
+    Widget build(BuildContext context) { // 这里参数是什么？
       return new MaterialApp(
         title: 'Welcome to Flutter',
         home: new Scaffold(
-          appBar: new AppBar(
-            title: new Text('Welcome to Flutter, My Friend'),
+            // Scaffold 是 Material library 中提供的一个widget
+            // 它提供了默认的导航栏、标题和包含主屏幕widget树的body属性
+          appBar: new AppBar( // 默认导航栏
+            title: new Text('Welcome to Flutter, My Friend'), // 标题
           ),
-          body: new Center(
+          body: new Center( //包含主屏幕widget树的body属性
+            // widget树可以很复杂 ？
+            // 测试发现，widget树可任意嵌套
             child: new Text('Hello World'),
           ),
         ),

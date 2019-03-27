@@ -12,7 +12,10 @@ class MyApp extends StatelessWidget {
           title: new Text('Welcome to Flutter, My Friend'),
         ),
         body: new Center(
-          child: new Text('Hello World'),
+          // child: new Text('Hello World'),
+          child: new Center(
+            child: new Text("eat me"),
+          )
         ),
       ),
     );
