@@ -337,6 +337,7 @@
     // 集合存储用户喜欢（收藏）的单词对
     final _saved = new Set<WordPair>(); // add here
     // <>() ?
+    //  A: 这里是实例化一个 set 类 <> 内标明元素类型
       
     final _biggerFont = const TextStyle(fontSize: 18.0);
     ...
@@ -541,3 +542,57 @@ class MyApp extends StatelessWidget {
 }
 ```
 
+### SUM UP
+
+该 APP 最终实现两个页面和彼此跳转，主页面显示推荐的单词对列表，收藏页面显示收藏的单词对。
+
+
+
+主要步骤
+
+- 创建项目
+- 添加 package
+- 添加 Widget
+- 添加 ListView
+- 添加 导航
+- 使用主题
+
+
+
+学会了
+
+-  **[lib/main.dart](./startup_namer/lib/main.dart)** 程序的基本结构
+
+- 目前为止，主要工作是UI类继承和实例化，构建函数和构建参数，函数调用
+
+- UI类有：
+
+  - `StatelessWidget`
+  - `StatefulWidget`
+
+  - `Scaffold`
+  - `AppBar`
+  - `Text`
+  - `IconButton`
+  - `Icon`
+  - `ListView`
+  - ` MaterialPageRoute`
+  - `ListTile`
+  - `ListTile.divideTiles`
+
+- 功能和事件有：
+
+  - `Navigator`
+  - `onTap`
+  - `setState`
+  - `itemBuilder`
+
+- `list` 和 `set`
+- Dart语言细节
+  - =>  Dart中单行函数或方法的简写
+  - `_` Dart中强制私有
+  - `<>[]` 元素组
+  - `child` & `children`
+  - `~/`除法向下取整
+  - 字符串变量 用`'Strings'`
+  - `final` & `new`
