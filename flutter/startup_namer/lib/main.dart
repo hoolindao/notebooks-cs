@@ -31,8 +31,11 @@ class RandomWords extends StatefulWidget {
   createState() => new RandomWordsState();
 }
 
+// 构建 ListView
+// 添加 收藏功能
 class RandomWordsState extends State<RandomWords> {
   final _suggestions = <WordPair>[];
+  final _saved = new Set<WordPair>();
   final _biggerFont = const TextStyle(fontSize: 18.0);
   // 此方法用来构建显示建议单词对的 ListView
   // 描述:
@@ -55,12 +58,29 @@ class RandomWordsState extends State<RandomWords> {
     );
   }
   // 此方法用来生成更漂亮的显示行
+  // 添加💗图标，和交互功能
   Widget _buildRow(WordPair pair) {
+    final alreadySaved = _saved.contains(pair);
     return new ListTile(
       title: new Text(
         pair.asPascalCase,
         style: _biggerFont,
       ),
+      trailing: new Icon(
+        alreadySaved ? Icons.favorite : Icons.favorite_border,
+        color: alreadySaved ? Colors.red : null,
+      ),
+      // 当心形❤图标被点击时，函数调用setState()通知框架状态已经改变。
+      // 如果单词条目已经添加到收藏夹中， 再次点击它将其从收藏夹中删除。
+      onTap: () {
+        setState(() {
+          if (alreadySaved) {
+            _saved.remove(pair);
+          } else {
+            _saved.add(pair);
+          }
+        });
+      },
     );
   }
   // 3/27：调用随机生成单词对并驼峰风格显示

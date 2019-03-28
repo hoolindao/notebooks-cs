@@ -326,7 +326,84 @@
 
   >  重新启动应用程序。你应该看到一个单词对列表。尽可能地向下滚动，您将继续看到新的单词对。
 
-- 添加交互
+- 添加交互（ 为每一行添加一个可点击的心形 ❤️ 图标。当用户点击列表中的条目，切换其“收藏”状态）
+
+  - 添加 `_saved Set` 到 `RandomWordsState` ( 在这里，Set比List更合适，因为Set中不允许重复的值)
+
+  ```dart
+  class RandomWordsState extends State<RandomWords> {
+    final _suggestions = <WordPair>[];
+      
+    // 集合存储用户喜欢（收藏）的单词对
+    final _saved = new Set<WordPair>(); // add here
+    // <>() ?
+      
+    final _biggerFont = const TextStyle(fontSize: 18.0);
+    ...
+  }
+  ```
+
+  - 在 `_buildRow` 方法中添加 `alreadySaved` 用于检查
+
+  ```dart
+  Widget _buildRow(WordPair pair) {
+    final alreadySaved = _saved.contains(pair); // add here
+    ...
+  }
+  ```
+
+  - 在 `_buildRow()`中， 添加一个心形 ❤️ 图标到 ListTiles以启用收藏功能
+
+  ```dart
+  Widget _buildRow(WordPair pair) {
+    final alreadySaved = _saved.contains(pair);
+    return new ListTile(
+      title: new Text(
+        pair.asPascalCase,
+        style: _biggerFont,
+      ),
+      // add follow
+      trailing: new Icon(
+        alreadySaved ? Icons.favorite : Icons.favorite_border,
+        color: alreadySaved ? Colors.red : null,
+      ),
+    );
+  }
+  ```
+
+  - 给心形 ❤️ 图标添加交互能力，在 `_buildRow`中让心形❤️图标变得可以点击
+
+    - **提示:** 在Flutter的响应式风格的框架中，调用`setState()` 会为State对象触发`build()`方法，从而导致对UI的更新
+
+    ```dart
+    Widget _buildRow(WordPair pair) {
+      final alreadySaved = _saved.contains(pair);
+      return new ListTile(
+        title: new Text(
+          pair.asPascalCase,
+          style: _biggerFont,
+        ),
+        trailing: new Icon(
+          alreadySaved ? Icons.favorite : Icons.favorite_border,
+          color: alreadySaved ? Colors.red : null,
+        ),
+        // add follow
+        // 当心形❤️图标被点击时，函数调用setState()通知框架状态已经改变。
+        // 如果单词条目已经添加到收藏夹中， 再次点击它将其从收藏夹中删除。
+        onTap: () {
+          setState(() {
+            if (alreadySaved) {
+              _saved.remove(pair);
+            } else {
+              _saved.add(pair);
+            }
+          });
+        },
+      );
+    }
+    ```
+
+    
 
 - 导航到新页面
 
