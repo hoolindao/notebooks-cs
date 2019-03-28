@@ -13,7 +13,8 @@ void main() => runApp(new MyApp());
 //          child: new RandomWords(),
 //        ),
 //      ),
-// 3/28： 更新，将内容构造交由RandomWordsState管理
+// 3/28：更新，将内容构造交由RandomWordsState管理
+// 3/28: 使用主题更改 UI
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -21,6 +22,9 @@ class MyApp extends StatelessWidget {
     return new MaterialApp(
       // title: 'Welcome to Flutter',
       title:'Startup Name Generator',
+      theme: new ThemeData(
+        primaryColor: Colors.white ,
+      ),
       home: new RandomWords(),
     );
   }

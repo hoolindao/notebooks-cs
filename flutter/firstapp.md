@@ -521,3 +521,23 @@
   > 热重载应用程序。收藏一些选项，并点击应用栏中的列表图标，在新路由页面中显示收藏的内容。 请注意，导航器会在应用栏中添加一个“返回”按钮。你不必显式实现Navigator.pop。点击后退按钮返回到主页路由。
 
 - 主题更改UI
+
+```dart
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return new MaterialApp(
+      title: 'Startup Name Generator',
+      // 通过配置ThemeData类轻松更改应用程序的主题。
+      // 您的应用程序目前使用默认主题，下面将更改primary color颜色为白色。
+      // add follow
+      theme: new ThemeData(
+        primaryColor: Colors.white,
+      ),
+      // add end
+      home: new RandomWords(),
+    );
+  }
+}
+```
+
