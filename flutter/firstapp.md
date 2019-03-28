@@ -52,9 +52,9 @@
     Widget build(BuildContext context) { // 这里参数是什么？
       return new MaterialApp(
         title: 'Welcome to Flutter',
+        // Scaffold 是 Material library 中提供的一个widget
+        // 它提供了默认的导航栏、标题和包含主屏幕widget树的body属性
         home: new Scaffold(
-            // Scaffold 是 Material library 中提供的一个widget
-            // 它提供了默认的导航栏、标题和包含主屏幕widget树的body属性
           appBar: new AppBar( // 默认导航栏
             title: new Text('Welcome to Flutter, My Friend'), // 标题
           ),
@@ -119,22 +119,22 @@
   ```dart
     @override
     Widget build(BuildContext context) {
-      final wordPair = new WordPair.random(); // add code here
       // 随机选取单词, 存储在 wordPair 变量中
       // 此方法写在内部，故每次热重载都会使正在运行的应用程序中选择不同的单词对
       // 因为，每次 MaterialApp 需要渲染时或者在Flutter Inspector中切换平台时 build 都会运行.
+      final wordPair = new WordPair.random(); // add code here
       // final?
       // 为什么这里用分号？
+      // 	A：函数参数用（，）隔开，单行表达式用（；）表示结束
+      
       return new MaterialApp(
-          
-   					...
-       
+           ...
            body: new Center(
             //child: new Text('Hello World'),
-            child: new Text(wordPair.asPascalCase), // add code here
             // 输出选取的单词并设置显示格式
-               ),
-          );
+            child: new Text(wordPair.asPascalCase), // add code here
+           ),
+      );
     }
   ```
 
@@ -179,20 +179,17 @@
     
     ```
 
-    - 修改 `MyAPP`  将生成单词对代的码从RandomWordsState移动到MyApp中
+    - 修改 `MyAPP`  将生成单词对从RandomWordsState移动到MyApp中
 
     ```dart
       Widget build(BuildContext context) {
         // final wordPair = new WordPair.random();  // 删除此行
         return new MaterialApp(
-            
-    			...
-    
+            ...
     		body: new Center(
               //child: new Text(wordPair.asPascalCase),
               child: new RandomWords(), // add this code
-            ),
-            
+            ), 
         );
       }
     ```
@@ -203,26 +200,131 @@
   >
   > -- 后续会用到？
 
+  
+
+> 今天 3/27 先学到这里 
+>
+> - Flutter应用程序的基本结构.
+> - 查找和使用packages来扩展功能.
+> - 使用热重载加快开发周期.
+> - 如何实现有状态的widget. （原理未知）
+> - 驼峰命名风格
+
+
+
 - 创建ListView
 
   > 在这一步中，您将扩展（继承）RandomWordsState类，以生成并显示单词对列表。 当用户滚动时，ListView中显示的列表将无限增长。 ListView的`builder`工厂构造函数? 允许您按需建立一个懒加载? 的列表视图。
 
   - _suggestions 列表
+
     - 在Dart语言中使用下划线前缀标识符，会强制其变成私有的
     - 添加一个`biggerFont`变量来增大字体大小
+
+    ```dart
+    class RandomWordsState extends State<RandomWords> {
+      final _suggestions = <WordPair>[]; // add here  
+      // <?>[] ?
+      // 	A：向量？
+    
+      final _biggerFont = const TextStyle(fontSize: 18.0); // add here
+      ...
+    }
+    ```
+
   - 向RandomWordsState类添加一个 `_buildSuggestions()` 函数. 此方法构建显示建议单词对的ListView。
+
+  ```dart
+  class RandomWordsState extends State<RandomWords> {
+    ...
+    // add follow
+    Widget _buildSuggestions() {
+      return new ListView.builder( // ListView 类
+        padding: const EdgeInsets.all(16.0),
+        // ListView类提供了一个builder属性
+        // itemBuilder 值是一个匿名回调函数， 接受两个参数- BuildContext和行迭代器i
+        // 功能：
+        // 	对于每个建议的单词对都会调用一次itemBuilder，然后将单词对添加到ListTile行中
+        // 	在偶数行，该函数会为单词对添加一个ListTile row.
+        // 	在奇数行，该函数会添加一个分割线widget，来分隔相邻的词对。
+        // 	注意，在小屏幕上，分割线看起来可能比较吃力。
+        // 过程：
+        //	迭代器从0开始，每调用一次该函数，i就会自增1，对于每个建议的单词对都会执行一次 ？
+        itemBuilder: (context, i) {
+          // 在每一列之前，添加一个1像素高的分隔线widget
+          if (i.isOdd) return new Divider();
+  
+          // 语法 "i ~/ 2" 表示i除以2，但返回值是整形（向下取整），比如i为：1, 2, 3, 4, 5
+          // 时，结果为0, 1, 1, 2, 2， 这可以计算出ListView中减去分隔线后的实际单词对数量
+          final index = i ~/ 2;
+          // 如果是建议列表中最后一个单词对
+          if (index >= _suggestions.length) {
+            // ...接着再生成10个单词对，然后添加到 建议列表
+            _suggestions.addAll(generateWordPairs().take(10));
+          }
+          // 对于每一个单词对，_buildSuggestions函数都会调用一次_buildRow 
+          return _buildRow(_suggestions[index]); // 根据建议列表内容构造行
+        }
+      );
+    }
+  }
+  ```
+
   - 在RandomWordsState中添加一个`_buildRow`函数 :
+
+  ```dart
+  class RandomWordsState extends State<RandomWords> {
+    ...
+    // add follow
+    // 这个函数在ListTile中显示每个新词对，这使您在下一步中可以生成更漂亮的显示行
+    Widget _buildRow(WordPair pair) {
+      return new ListTile(
+        title: new Text(
+          pair.asPascalCase,
+          style: _biggerFont,
+        ),
+      );
+    }
+  }
+  ```
+
   - 使用`_buildSuggestions()`
+
+  ```dart
+  // 更新RandomWordsState的build方法以使用_buildSuggestions()
+  // 而不是直接调用单词生成库
+  class RandomWordsState extends State<RandomWords> {
+    ...
+    @override
+    Widget build(BuildContext context) {
+      // final wordPair = new WordPair.random(); // 删除这两行
+      // return new Text(wordPair.asPascalCase);
+      return new Scaffold (
+        appBar: new AppBar(
+          title: new Text('Startup Name Generator'),
+        ),
+        body: _buildSuggestions(),
+      );
+    }
+    ...
+  }
+  ```
+
   - 更新MyApp的build方法。从MyApp中删除Scaffold和AppBar实例。 这些将由RandomWordsState管理
 
-  >  重新启动应用程序。你应该看到一个单词对列表。尽可能地向下滚动，您将继续看到新的单词对。
+  ```dart
+  class MyApp extends StatelessWidget {
+    @override
+    Widget build(BuildContext context) {
+      return new MaterialApp(
+        title: 'Startup Name Generator',
+        home: new RandomWords(),
+      );
+    }
+  }
+  ```
 
-  - 今天 3/27 先学到这里 
-    - Flutter应用程序的基本结构.
-    - 查找和使用packages来扩展功能.
-    - 使用热重载加快开发周期.
-    - 如何实现有状态的widget. （原理未知）
-    - 驼峰命名风格
+  >  重新启动应用程序。你应该看到一个单词对列表。尽可能地向下滚动，您将继续看到新的单词对。
 
 - 添加交互
 
