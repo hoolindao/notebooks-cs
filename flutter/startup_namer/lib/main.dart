@@ -34,6 +34,24 @@ class RandomWords extends StatefulWidget {
 // 构建 ListView
 // 添加 收藏功能
 class RandomWordsState extends State<RandomWords> {
+  // 3/27：调用随机生成单词对并驼峰风格显示
+  // 3/28：更新RandomWordsState的build方法以使用_buildSuggestions()
+  // 3/28: 在 appBar 上添加列表图标
+  @override
+  Widget build(BuildContext context) {
+    // final wordPair = new WordPair.random();
+    // return new Text(wordPair.asPascalCase);
+    return new Scaffold(
+      appBar: new AppBar(
+        title: new Text('Startup Name Generator'),
+        // 当用户点击列表图标时，包含收藏夹的新路由页面入栈显示
+        actions: <Widget>[
+          new IconButton(icon: new Icon(Icons.list), onPressed: _pushSaved),
+        ],
+      ),
+      body: _buildSuggestions(),
+    );
+  }
   final _suggestions = <WordPair>[];
   final _saved = new Set<WordPair>();
   final _biggerFont = const TextStyle(fontSize: 18.0);
@@ -83,17 +101,40 @@ class RandomWordsState extends State<RandomWords> {
       },
     );
   }
-  // 3/27：调用随机生成单词对并驼峰风格显示
-  // 3/28：更新RandomWordsState的build方法以使用_buildSuggestions()
-  @override
-  Widget build(BuildContext context) {
-    // final wordPair = new WordPair.random();
-    // return new Text(wordPair.asPascalCase);
-    return new Scaffold(
-      appBar: new AppBar(
-        title: new Text('Startup Name Generator'),
+  // 建立一个路由并将其推入到导航管理栈中
+  void _pushSaved(){
+    // 使路由入栈
+    Navigator.of(context).push(
+      // 建立路由
+      new MaterialPageRoute(
+          builder: (context) {
+            // ListTile 行
+            final tiles = _saved.map(
+                (pair) {
+                  return new ListTile(
+                    title: new Text(
+                      pair.asPascalCase,
+                      style: _biggerFont,
+                    ),
+                  );
+                },
+            );
+            // 分割线
+            final divided = ListTile
+              .divideTiles(
+                context: context,
+                tiles: tiles
+              )
+              .toList();
+            // builder 返回 Scaffold
+            return new Scaffold(
+              appBar: new AppBar(
+                title: new Text('Saved Suggestions'),
+              ),
+              body: new ListView(children: divided,),
+            );
+          },
       ),
-      body: _buildSuggestions(),
     );
   }
 }

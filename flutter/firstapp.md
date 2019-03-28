@@ -14,7 +14,7 @@
 
 > **你会用到什么？**
 >
-> 您需要安装以下内容:
+> 您需要安装以下内容: 
 >
 > - Flutter SDK
 >   Flutter SDK包括Flutter的引擎、框架、widgets、工具和Dart SDK。此示例需要v0.1.4或更高版本
@@ -225,7 +225,7 @@
     class RandomWordsState extends State<RandomWords> {
       final _suggestions = <WordPair>[]; // add here  
       // <?>[] ?
-      // 	A：向量？
+      // 	A：方括号[]表示一组 <?>
     
       final _biggerFont = const TextStyle(fontSize: 18.0); // add here
       ...
@@ -403,8 +403,121 @@
     }
     ```
 
-    
+- 导航到新页面 （路由 route）
 
-- 导航到新页面
+  - 列表图标？
+
+  ```dart
+  class RandomWordsState extends State<RandomWords> {
+    ...
+    @override
+    Widget build(BuildContext context) {
+      return new Scaffold(
+        appBar: new AppBar(
+          title: new Text('Startup Name Generator'),
+          // 为AppBar添加一个列表图标。
+          // 当用户点击列表图标时，包含收藏夹的新路由页面入栈显示
+          // add follow 
+          actions: <Widget>[
+            new IconButton(icon: new Icon(Icons.list), onPressed: _pushSaved),
+          ],
+          // add end
+          // 某些widget属性需要单个widget（child)
+          // 而其它一些属性，如action，需要一组widgets(children），
+          // 用方括号[]表示。
+        ),
+        body: _buildSuggestions(),
+      );
+    }
+    ...
+  }
+  ```
+
+  - `_pushSaved()`方法
+    - 先空方法，热重载后可看见列表图标
+    - 添加MaterialPageRoute及其builder
+    - 添加生成ListTile行的代码
+    - ListTile的`divideTiles()`方法在每个ListTile之间添加1像素的分割线。
+    - 该 `divided` 变量持有最终的列表项。
+
+  ```dart
+  class RandomWordsState extends State<RandomWords> {
+    ...
+    // add follow
+    // 建立一个路由并将其推入到导航管理器栈中
+    void _pushSaved() { 
+        // 添加Navigator.push调用，这会使路由入栈
+        Navigator.of(context).push(
+            // 添加 MaterialPageRoute
+            new MaterailPageRoute(
+                builder: (context) {
+                    // 生成ListTile行
+                    final tiles = _saved.map(
+                        (pair) {
+                            return new ListTile(
+                            	title: new Text(
+                              	pair.asPascalCase,
+                                  style: _biggerFont,
+                              ),
+                            );
+                        },
+                    );
+                    // 在每个ListTile之间添加1像素的分割线
+                    final divided = ListTile
+                        .divideTiles(
+                        context: context,
+                        tiles: tiles,
+                    )
+                    .toList();
+                },
+            ),
+        );
+    }
+  }
+  ```
+
+  - `“Saved Suggestions”`新路由的应用栏
+
+  ```dart
+  void _pushSaved() {
+    Navigator.of(context).push(
+      new MaterialPageRoute(
+        builder: (context) {
+          final tiles = _saved.map(
+            (pair) {
+              return new ListTile(
+                title: new Text(
+                  pair.asPascalCase,
+                  style: _biggerFont,
+                ),
+              );
+            },
+          );
+          final divided = ListTile
+            .divideTiles(
+              context: context,
+              tiles: tiles,
+            )
+            .toList();
+          // 使builder返回一个Scaffold，
+          // 描述：
+          // 	其中包含名为“Saved Suggestions”的新路由的应用栏。
+          // 	新路由的body由包含ListTiles行的ListView组成; 
+          // 	每行之间通过一个分隔线分隔。
+  		// add follow
+          return new Scaffold(
+            appBar: new AppBar(
+              title: new Text('Saved Suggestions'),
+            ),
+            body: new ListView(children: divided),
+          );
+          // add end
+        },
+      ),
+    );
+  }
+  ```
+
+  > 热重载应用程序。收藏一些选项，并点击应用栏中的列表图标，在新路由页面中显示收藏的内容。 请注意，导航器会在应用栏中添加一个“返回”按钮。你不必显式实现Navigator.pop。点击后退按钮返回到主页路由。
 
 - 主题更改UI
