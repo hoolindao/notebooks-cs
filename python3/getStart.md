@@ -59,4 +59,5 @@
 
 - [Python3.x基础学习资料整理 - 路人甲的文章 - 知乎](https://zhuanlan.zhihu.com/p/24249743)
 - [廖雪峰 Python 教程](https://www.liaoxuefeng.com/wiki/0014316089557264a6b348958f449949df42a6d3a2e542c000)
-- [Python版本管理神器-pyenv](https://zhuanlan.zhihu.com/p/36402791)
+- [Python版本管理神器-pyenv](https://zhuanlan.zhihu.com/p/36402791)、
+- [Python 3 入门，看这篇就够了](https://shockerli.net/post/python-study-note/#%E8%BF%90%E7%AE%97%E7%AC%A6)
