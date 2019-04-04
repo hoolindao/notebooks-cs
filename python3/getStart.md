@@ -5,7 +5,6 @@
 ## note
 
 > 用Python可以做什么？可以做日常任务，比如自动备份你的MP3；可以做网站，很多著名的网站包括YouTube就是Python写的；可以做网络游戏的后台，很多在线游戏的后台都是Python开发的。总之就是能干很多很多事啦。
-> 
 > Python当然也有不能干的事情，比如写操作系统，这个只能用C语言写；写手机应用，只能用Swift/Objective-C（针对iPhone）和Java（针对Android）；写3D游戏，最好用C或C++。
 
 ### Q list
@@ -26,6 +25,9 @@
 - [Python算术运算符](./content/basic/Python算术运算.md)
 - [运算符汇总](https://shockerli.net/post/python-study-note/#%E8%BF%90%E7%AE%97%E7%AC%A6)
 - [Python格式化输出](./content/basic/Python格式化输出Python格式化输出.md)
+- [Python文件编码问题和与之相关含有非英文字符串问题]
+  - [ASCII,Unicode,UTF-8三套编码标准的联系与区别](./content/ASCII,Unicode,UTF-8三套编码标准的联系与区别.md)
+  - [Python解释器使用UTF-8编码读取代码](./content/basic/Python解释器使用UTF-8编码读取代码.md)
 
 ### Knowledge
 
