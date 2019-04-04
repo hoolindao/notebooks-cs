@@ -15,7 +15,7 @@
 - [基本输入输出`input()`和`print()`的使用](./HelloWorld/notes/基本输入输出`input()`和`print()`的使用.md)
 
 #### 目标：
-- Python内置几个基本数据类型？
+- [Python内置几个基本数据类型？](./content/basic/Python内置几个基本数据类型？.md)
 - 什么是动态语言？
 
 ### Knowledge 
