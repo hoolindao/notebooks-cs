@@ -25,6 +25,7 @@
 - [Python变量赋值发生了什么？](content/basic/Python变量赋值发生了什么？.md)
 - [Python算术运算符](./content/basic/Python算术运算.md)
 - [运算符汇总](https://shockerli.net/post/python-study-note/#%E8%BF%90%E7%AE%97%E7%AC%A6)
+- [Python格式化输出](./content/basic/Python格式化输出Python格式化输出.md)
 
 ### Knowledge
 
