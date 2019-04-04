@@ -14,12 +14,29 @@
 - [MacOS下编写可执行的py文件，实现'hello,world'](./HelloWorld/notes/MacOS下编写可执行的py文件，实现'hello,world'.md) [runHello.py](./HelloWorld/codes/runHello.py)
 - [基本输入输出`input()`和`print()`的使用](./HelloWorld/notes/基本输入输出`input()`和`print()`的使用.md)
 
+#### 目标：
+- Python内置几个基本数据类型？
+- 什么是动态语言？
+
 ### Knowledge 
-#### 基础
+#### 第一步
 - Python交互模式
 - Python解释器使用，编译和执行`.py`文件
 - Input/Output，或者简写为IO
   - `input()`和`print()`是在命令行下面最基本的输入和输出
+
+#### 基础语法和概念
+- 动态语言与静态语言
+- Python基础
+  - 数据类型与变量
+    - 整数和浮点数相关的运算
+    - 布尔值相关的运算
+    - 变量用法与静态语言的不同
+  - 字符串和编码
+  - list和tuple
+  - 条件判断
+  - 循环
+  - dict和set
 
 ## TODO
 - [x] [Mac多环境安装](https://gist.github.com/miminus/671de665a440ef12cafc31e7a97acc89)
