@@ -10,8 +10,8 @@
 #### 基础
 - [Python交互模式的用处](./notes/Python交互模式的用处.md)
 - [如何在命令行界面进入和退出Python交互模式](./notes/如何在命令行界面进入和退出Python交互模式)
-- 编写并用Python解释器执行‘hello, world’程序 [hello.py](./HelloWorld/hello.py)
-- [MacOS下编写可执行的py文件，实现'hello, world'](./notes/MacOS下编写可执行的py文件，实现'hello, world'.md) [runHello.py](./HelloWorld/runHello.py)
+- 编写并用Python解释器执行‘hello,world’程序 [hello.py](./HelloWorld/hello.py)
+- [MacOS下编写可执行的py文件，实现'hello,world'](./notes/MacOS下编写可执行的py文件，实现'hello,world'.md) [runHello.py](./HelloWorld/runHello.py)
 - [基本输入输出`input()`和`print()`的使用](./notes/基本输入输出`input()`和`print()`的使用.md)
 
 ### Knowledge 
