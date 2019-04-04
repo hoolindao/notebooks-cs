@@ -7,12 +7,12 @@
 > Python当然也有不能干的事情，比如写操作系统，这个只能用C语言写；写手机应用，只能用Swift/Objective-C（针对iPhone）和Java（针对Android）；写3D游戏，最好用C或C++。
 
 ### Q list
-#### 基础
-- [Python交互模式的用处](./notes/Python交互模式的用处.md)
-- [如何在命令行界面进入和退出Python交互模式](./notes/如何在命令行界面进入和退出Python交互模式)
-- 编写并用Python解释器执行‘hello,world’程序 [hello.py](./HelloWorld/hello.py)
-- [MacOS下编写可执行的py文件，实现'hello,world'](./notes/MacOS下编写可执行的py文件，实现'hello,world'.md) [runHello.py](./HelloWorld/runHello.py)
-- [基本输入输出`input()`和`print()`的使用](./notes/基本输入输出`input()`和`print()`的使用.md)
+#### 目标：Run hello, %you%
+- [Python交互模式的用处](./HelloWorld/notes/Python交互模式的用处.md)
+- [如何在命令行界面进入和退出Python交互模式](./HelloWorld/notes/如何在命令行界面进入和退出Python交互模式)
+- 编写并用Python解释器执行‘hello,world’程序 [hello.py](./HelloWorld/notes/hello.py)
+- [MacOS下编写可执行的py文件，实现'hello,world'](./HelloWorld/notes/MacOS下编写可执行的py文件，实现'hello,world'.md) [runHello.py](./HelloWorld/notes/runHello.py)
+- [基本输入输出`input()`和`print()`的使用](./HelloWorld/notes/基本输入输出`input()`和`print()`的使用.md)
 
 ### Knowledge 
 #### 基础
