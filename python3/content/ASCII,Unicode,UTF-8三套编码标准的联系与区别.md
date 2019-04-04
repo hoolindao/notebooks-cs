@@ -38,8 +38,8 @@ A|01000001|00000000 01000001|01000001
 - 内存统一使用`Unicode`编码
 - 当需要保存到硬盘或者需要传输的时候，就转换为`UTF-8`编码
 
-    ![image0](../image/UTF-8-works-diagram/0.png)
+![image0](../image/UTF-8-works-diagram/0.png)
 
 浏览网页的时候，服务器会把动态生成的Unicode内容转换为UTF-8再传输到浏览器
 
-    ![image0](../image/UTF-8-works-diagram/1.png)
+![image1](../image/UTF-8-works-diagram/1.png)
