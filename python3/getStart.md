@@ -9,7 +9,7 @@
 
 ### Q list
 
-#### 目标：Run hello, %you%
+#### 目标：[Run hello, %you%](./HelloWorld)
 
 - [Python交互模式的用处](./HelloWorld/notes/Python交互模式的用处.md)
 - [如何在命令行界面进入和退出Python交互模式](./HelloWorld/notes/如何在命令行界面进入和退出Python交互模式)
@@ -17,7 +17,7 @@
 - [MacOS下编写可执行的py文件，实现'hello,world'](./HelloWorld/notes/MacOS下编写可执行的py文件，实现'hello,world'.md) [runHello.py](./HelloWorld/codes/runHello.py)
 - [基本输入输出`input()`和`print()`的使用](./HelloWorld/notes/基本输入输出`input()`和`print()`的使用.md)
 
-#### 目标：基础语法和运算符
+#### 目标：用上所有基本数据类型写一个简单命令行模式下的交互程序
 
 - [Python内置几个基本数据类型？](./content/basic/Python内置几个基本数据类型？.md)
 - [什么是动态语言？](./content/什么是动态语言？.md)
