@@ -6,19 +6,16 @@
 > 
 > Python当然也有不能干的事情，比如写操作系统，这个只能用C语言写；写手机应用，只能用Swift/Objective-C（针对iPhone）和Java（针对Android）；写3D游戏，最好用C或C++。
 
+### Q list
+#### 基础
+- [Python交互模式的用处](./note/Python交互模式的用处.md)
+- 如何在命令行界面进入和退出Python交互模式
+- 编写并用Python解释器执行‘hello, world’程序 [hello.py](./HelloWorld/hello.py)
+- MacOS下编写可执行的py文件实现'hello, world' [runHello.py](./HelloWorld/runHello.py)
+
+### Knowledge 
 - Python 交互模式
-```shell
-# 进入Python交互模式
-$ python
-
-Python 3.7.0 (default, Apr  3 2019, 17:59:10)
-[Clang 10.0.1 (clang-1001.0.46.3)] on darwin
-Type "help", "copyright", "credits" or "license" for more information.
->>>
-
-# 退出Python交互模式
->>> exit()
-```
+- Python 
 
 ## TODO
 - [x] [Mac多环境安装](https://gist.github.com/miminus/671de665a440ef12cafc31e7a97acc89)
