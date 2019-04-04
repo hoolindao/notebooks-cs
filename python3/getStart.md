@@ -22,6 +22,8 @@
 
 - [Python内置几个基本数据类型？](./content/basic/Python内置几个基本数据类型？.md)
 - [什么是动态语言？](./content/什么是动态语言？.md)
+- [Python变量赋值发生了什么？](content/basic/Python变量赋值发生了什么？.md)
+- [Python算术运算符]
 
 ### Knowledge
 
