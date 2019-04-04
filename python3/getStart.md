@@ -18,12 +18,13 @@
 - [MacOS下编写可执行的py文件，实现'hello,world'](./HelloWorld/notes/MacOS下编写可执行的py文件，实现'hello,world'.md) [runHello.py](./HelloWorld/codes/runHello.py)
 - [基本输入输出`input()`和`print()`的使用](./HelloWorld/notes/基本输入输出`input()`和`print()`的使用.md)
 
-#### 目标：
+#### 目标：基础语法和运算符
 
 - [Python内置几个基本数据类型？](./content/basic/Python内置几个基本数据类型？.md)
 - [什么是动态语言？](./content/什么是动态语言？.md)
 - [Python变量赋值发生了什么？](content/basic/Python变量赋值发生了什么？.md)
-- [Python算术运算符]
+- [Python算术运算符](./content/basic/Python算术运算.md)
+- [运算符汇总](https://shockerli.net/post/python-study-note/#%E8%BF%90%E7%AE%97%E7%AC%A6)
 
 ### Knowledge
 
