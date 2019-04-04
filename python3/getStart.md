@@ -8,19 +8,24 @@
 
 ### Q list
 #### 基础
-- [Python交互模式的用处](./note/Python交互模式的用处.md)
-- 如何在命令行界面进入和退出Python交互模式
+- [Python交互模式的用处](./notes/Python交互模式的用处.md)
+- [如何在命令行界面进入和退出Python交互模式](./notes/如何在命令行界面进入和退出Python交互模式)
 - 编写并用Python解释器执行‘hello, world’程序 [hello.py](./HelloWorld/hello.py)
-- MacOS下编写可执行的py文件实现'hello, world' [runHello.py](./HelloWorld/runHello.py)
+- [MacOS下编写可执行的py文件，实现'hello, world'](./notes/MacOS下编写可执行的py文件，实现'hello, world'.md) [runHello.py](./HelloWorld/runHello.py)
+- [基本输入输出`input()`和`print()`的使用](./notes/基本输入输出`input()`和`print()`的使用.md)
 
 ### Knowledge 
-- Python 交互模式
-- Python 
+#### 基础
+- Python交互模式
+- Python解释器使用，编译和执行`.py`文件
+- Input/Output，或者简写为IO
+  - `input()`和`print()`是在命令行下面最基本的输入和输出
 
 ## TODO
 - [x] [Mac多环境安装](https://gist.github.com/miminus/671de665a440ef12cafc31e7a97acc89)
     - [x] [bug fix](https://github.com/jiansoung/issues-list/issues/13)
-
+- [x] [Python代码运行助手](https://www.liaoxuefeng.com/wiki/0014316089557264a6b348958f449949df42a6d3a2e542c000/001432523496782e0946b0f454549c0888d05959b99860f000)
+    - 执行含有`input()`的代码将超时 
 
 ## link
 - [Python3.x基础学习资料整理 - 路人甲的文章 - 知乎](https://zhuanlan.zhihu.com/p/24249743)
