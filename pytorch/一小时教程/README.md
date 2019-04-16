@@ -26,7 +26,9 @@
  [1., 1., 1.]]
 
 #### `import torch`
+
 - [construct tensors](./construcatTensors.py)
 - [operations, additon for example](./addTensors.py)
 - operations, resize ([use torch.view()](./resizeTensors.py)), get one element tensor's valuse as pyhon number ([use torch.item()](getOneElementTensorValue.py))
-- [CUDA Tensors, Tensors can be moved onto any device using the .to method.](./CUDATensors.py)
+- [CUDA Tensors, Tensors can be moved onto any device using the `.to` method.](./CUDATensors.py)
+
