@@ -42,7 +42,7 @@
   // main函数使用了(=>)符号, 这是Dart中单行函数或方法的简写。
   // 即
   // void main() {
-  //	runApp(new MyApp());
+  //	return runApp(new MyApp());
   // }
   
   class MyApp extends StatelessWidget {
