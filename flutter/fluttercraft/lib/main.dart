@@ -56,7 +56,7 @@ class _MyHomePageState extends State<MyHomePage> {
               textColor: Colors.blue,
               onPressed: () {
                 Navigator.push( context,
-                    new MatertialPageRoute(builder: (context) {
+                    new MaterialPageRoute(builder: (context) {
                       return new NewRoute();
                     }));
               },
