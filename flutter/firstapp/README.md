@@ -1,6 +1,6 @@
 ### 编写我的第一个Flutter应用：Material App 
 
-[搭建好环境后，就可以开始尝试了](./getready.md)
+[搭建好环境后，就可以开始尝试了](../getready.md)
 
 > **你会学到什么:**
 >
