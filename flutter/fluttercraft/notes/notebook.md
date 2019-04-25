@@ -11,3 +11,17 @@ Stateful widget至少由两个类组成：
 - 一个StatefulWidget类。
 - 一个 State类； StatefulWidget类本身是不变的，但是 State类中持有的状态在widget生命周期中可能会发生变化。
 
+Dart IO库操作文件的API非常丰富，但本书不是介绍Dart语言的，故不详细说明，读者需要的话可以自行学习。
+
+个人范式
+
+routes 继承 stateless，并用 Scaffold 构建内容
+widget 继承 statefull
+
+因为 routes 继承 MaterialPage
+```dart
+          Navigator.push( context,
+           new MaterialPageRoute(builder: (context) {
+                  return new NewRoute();
+             }));
+```
