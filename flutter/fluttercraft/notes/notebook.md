@@ -25,3 +25,20 @@ widget 继承 statefull
                   return new NewRoute();
              }));
 ```
+
+ 这里有个小 Tip ，当代码框里输入 stl 的时候，可以自动弹出创建无状态控件的模板选项，而输入 stf 的时，就会弹出创建有状态 Widget 的模板选项。
+  代码格式化的时候，括号内外的逗号都会影响格式化时换行的位置。
+  如果觉得默认换行的线太短，可以在设置-Editor-Code Style-Dart-Wrapping and Braces-Hard wrap at 设置你接受的数值。
+
+作者：恋猫de小郭
+链接：https://juejin.im/post/5b631d326fb9a04fce524db2
+来源：掘金
+著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+
+## flutter 布局
+
+ Flutter 中拥有需要将近30种内置的 布局Widget，其中常用有 Container、Padding、Center、Flex、Stack、Row、Column、ListView 等，下面简单讲解它们的特性和使用。
+
+## flutter 页面
+
+Flutter 中除了布局的 Widget，还有交互显示的 Widget 和完整页面呈现的Widget。其中常见的有 MaterialApp、Scaffold、Appbar、Text、Image、FlatButton等。下面简单介绍这些 Wdiget，并完成一个页面。
