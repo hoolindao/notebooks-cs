@@ -28,6 +28,7 @@
 - [Python文件编码问题和与之相关含有非英文字符串问题]
   - [ASCII,Unicode,UTF-8三套编码标准的联系与区别](./content/ASCII,Unicode,UTF-8三套编码标准的联系与区别.md)
   - [Python解释器使用UTF-8编码读取代码](./content/basic/Python解释器使用UTF-8编码读取代码.md)
+- [Python条件判断和循环语句](./content/basic/Python条件判断和循环语句.md)
 
 ### Knowledge
 
@@ -47,9 +48,8 @@
     - 布尔值相关的运算
     - 变量用法与静态语言的不同
   - 字符串和编码
-  - list和tuple
-  - 条件判断
-  - 循环
+  - list和tuple 
+  - 条件判断、循环
   - dict和set
 
 ## TODO

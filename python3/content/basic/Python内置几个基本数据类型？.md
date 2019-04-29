@@ -61,7 +61,7 @@ True
 
 False
 ```
-#### 空值 `0 is not None`
+#### 空值 `0 is not None'
 ```python
 None
 ```
